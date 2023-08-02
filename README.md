@@ -17,8 +17,8 @@ pip install synthedata
 Below is an example of how to use synthedata to create a synthetic dataset:
 
 ```python
-from synthedata import datacreator
-from synthedata.datacreator import add_noise
+from synthedata import data_creator
+from synthedata.data_creator import add_noise
 
 # Initialize the DataCreator object
 data_creator = datacreator.DataCreator()
