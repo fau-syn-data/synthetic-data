@@ -55,6 +55,9 @@ dc.get_ground_truth()
 #Print ground truth for dependencies 
 dc.extract_dependencies()
 
+#Draw dependecy graph
+data_creator.draw_graph()
+
 #Return the dataframe
 df = dc.create_df()
 
