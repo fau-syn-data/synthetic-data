@@ -2,7 +2,7 @@
 
 
 
-# add_noise(n, mean=0, sd=1):
+## add_noise(n, mean=0, sd=1):
 
 **Description**: This function generates and returns an array of random
 numbers with normal distribution that can be used to add noise to data.
@@ -17,15 +17,15 @@ distribution.
 -   **mean** (float): optional Mean (center) of the normal distribution.
     Default is 0.
 
--   **Sd (**float):optional Standard deviation (strength) of the normal
+-   **sd** (float):optional Standard deviation (strength) of the normal
     distribution. Default is 1.
 
 **Returns:**
 
-ndarray Array of random numbers with normal distribution, used for
+-   (ndarray) Array of random numbers with normal distribution, used for
 adding noise to data.
 
-# add_na(vec, n=None, share=0.05)
+## add_na(vec, n=None, share=0.05)
 
 **Description:** The **add_na** function is used to introduce **None**
 (or **null**) values into a given series of values. The number of
@@ -51,7 +51,7 @@ values.
 -   **result** (array-like): A new array with **None** values introduced
     at randomly selected positions in the input series **vec**.
 
-# add_outlier(vec, n=None, share=0.01)
+## add_outlier(vec, n=None, share=0.01)
 
 **Description:** The **add_outlier** function is designed to introduce
 outlier values into a given series of values. The number of outlier
@@ -78,7 +78,7 @@ typical range of data values.
 -   **result** (array-like): A new array with outlier values introduced
     at randomly selected positions in the input series **vec**.
 
-# binarize_column(self, column_name, limit)
+## binarize_column(self, column_name, limit)
 
 **Description:** The **binarize_column** method is used to binarize a
 specific column of the dataframe associated with the object.
@@ -104,7 +104,7 @@ Binarization involves converting values in the column into binary values
 -   **self** (object): The modified object (class instance) with the
     specified column binarized.
 
-# generate_name(self)
+## generate_name(self)
 
 **Description:** The **generate_name** method is used to create generic
 column names that are not yet present in the dataframe associated with
@@ -123,7 +123,7 @@ column names.
 -   **temp** (str): A generated column name that is not already used in
     the dataframe.
 
-# categorize_column(self, column_name, limits)
+## categorize_column(self, column_name, limits)
 
 **Description:** The **categorize_column** method replaces numerical
 values in a specified column of the dataframe associated with the class
@@ -151,7 +151,7 @@ limits.
 -   **self** (object): The modified object (class instance) with the
     specified column categorized.
 
-# add_var(self, var_name: str, data_generation_function: Callable, features: list or dict = None, noise=True, outliers=True, nas=True)
+## add_var(self, var_name: str, data_generation_function: Callable, features: list or dict = None, noise=True, outliers=True, nas=True)
 
 **Description:** The **add_var** method adds a new variable as a column
 to the dataframe associated with the class instance. The method provides
@@ -194,7 +194,7 @@ noise, outliers, and missing values to the new column.
 -   **self** (object): The modified object (class instance) with the new
     variable added to the dataframe.
 
-# extract_dependencies(self)
+## extract_dependencies(self)
 
 **Description:** The **extract_dependencies** method extracts the
 dependencies of various columns in the dataframe and assigns respective
@@ -214,7 +214,7 @@ represented in different levels.
     extracted features and their dependencies, along with assigned
     levels for visualization.
 
-# draw_graph(self)
+## draw_graph(self)
 
 **Description:** The **draw_graph** method exports a graph file and a
 visualization in PNG format that illustrates the dependencies between
@@ -233,7 +233,7 @@ depend on one another.
 -   Exports a graph file and a .png visualization of the dependencies
     between different columns in the dataframe of the class instance
 
-# check_inputs(self, n: int = None, var_name: str = None)
+## check_inputs(self, n: int = None, var_name: str = None)
 
 **Description:** The **check_inputs** method replaces the **None**
 values of the **n** and **var_name** parameters with default values.
@@ -263,7 +263,7 @@ instance.
 -   **var_name** (str): The variable name after replacing the **None**
     value with a default value.
 
-# add_nominal(self, n: int = None, var_name: str = None, topic: Literal\[\"gender\", \"random\"\] = \"random\")
+## add_nominal(self, n: int = None, var_name: str = None, topic: Literal\[\"gender\", \"random\"\] = \"random\")
 
 **Description:** The **add_nominal** method adds a nominal column to the
 dataframe associated with the class instance. Nominal columns are
@@ -296,7 +296,7 @@ but it can be extended to include other nominal topics like races.
 -   **self** (object): The modified object (class instance) with the new
     nominal column added to the dataframe.
 
-# add_ordinal(self, n: int = None, var_name: str = None, topic: Literal\[\"grades\", \"random\"\] = \"random\")
+## add_ordinal(self, n: int = None, var_name: str = None, topic: Literal\[\"grades\", \"random\"\] = \"random\")
 
 **Description:** The **add_ordinal** method adds an ordinal column to
 the dataframe associated with the class instance. Ordinal columns
@@ -329,7 +329,7 @@ but it can be extended to include other ordinal topics.
 -   **self** (object): The modified object (class instance) with the new
     ordinal column added to the dataframe.
 
-# add_interval(self, n: int = None, var_name: str = None, topic: Literal\[\"IQ\", \"random\"\] = \"random\")
+## add_interval(self, n: int = None, var_name: str = None, topic: Literal\[\"IQ\", \"random\"\] = \"random\")
 
 **Description:** The **add_interval** method adds an interval column to
 the dataframe associated with the class instance. Interval columns
@@ -362,7 +362,7 @@ for IQ, but it can be extended to include other interval topics.
 -   **self** (object): The modified object (class instance) with the new
     interval column added to the dataframe.
 
-# add_ratio(self, n: int = None, var_name: str = None, topic: Literal\[\"revenue\", \"random\"\] = \"random\")
+## add_ratio(self, n: int = None, var_name: str = None, topic: Literal\[\"revenue\", \"random\"\] = \"random\")
 
 **Description:** The **add_ratio** method adds a ratio column to the
 dataframe associated with the class instance. Ratio columns represent
@@ -395,7 +395,7 @@ to include other ratio topics.
 -   **self** (object): The modified object (class instance) with the new
     ratio column added to the dataframe.
 
-# gen_target(self, var_name: str = \"target\", dependency_rate: float = 0.1, mandatory_features: list = \[\], bias: list = \[\])
+## gen_target(self, var_name: str = \"target\", dependency_rate: float = 0.1, mandatory_features: list = \[\], bias: list = \[\])
 
 **Description:** The **gen_target** method generates a target column and
 a biased target column for the dataframe associated with the class
@@ -429,7 +429,7 @@ generation of the target columns.
 -   **self** (object): The modified object (class instance) with the
     generated target and biased target columns added to the dataframe.
 
-# add_target(self, var_name: str = None, dependency_rate: float = 0.2, target_type: Literal\[\"numerical\", \"binary\", \"categorical\"\] = \"numerical\", topic: Literal\[\"random\", \"loan\"\] = \"random\", n_classes: int = 2)
+## add_target(self, var_name: str = None, dependency_rate: float = 0.2, target_type: Literal\[\"numerical\", \"binary\", \"categorical\"\] = \"numerical\", topic: Literal\[\"random\", \"loan\"\] = \"random\", n_classes: int = 2)
 
 **Description:** The **add_target** method adds a target variable to the
 dataframe associated with the class instance. The method allows you to
@@ -467,7 +467,9 @@ number of classes (for categorical targets).
 -   **self** (object): The modified object (class instance) with the
     generated target variable added to the dataframe.
 
-# get_ground_truth(self)
+
+
+## get_ground_truth(self)
 
 **Description:** The **get_ground_truth** method prints the ground truth
 functions for the target variables associated with the class instance.
@@ -483,7 +485,9 @@ It displays both the biased and unbiased ground truth functions.
 
 -   Prints the ground truth function for the biased and unbiased dataset
 
-# create_df(self)
+
+
+## create_df(self)
 
 **Description:** The **create_df** method returns a copy of the
 generated dataframe associated with the class instance. This method
@@ -502,7 +506,9 @@ class.
 -   **df_copy** (DataFrame): A copy of the generated dataframe with all
     modifications.
 
-# gen_multi(self, n:int=None, num_cols:int=0, cat_cols:int=0, n_layers:int=None)
+
+
+## gen_multi(self, n:int=None, num_cols:int=0, cat_cols:int=0, n_layers:int=None)
 
 **Description:** The **gen_multi** method adds columns to the dataframe
 based on the specified number of numerical and categorical columns
