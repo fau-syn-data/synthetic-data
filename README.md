@@ -27,27 +27,31 @@ data_creator = datacreator.DataCreator()
 # Add variables with specified functions and dependencies
 df = (
     data_creator
-    .add_var("x1", lambda: list(range(1, 9)), {})
-    .add_var("x1", lambda: list(range(1, 9)), {})
-    .add_var("x1", lambda: list(range(1, 9)), {})
-    .add_var("x1", lambda: list(range(1, 9)), {})
-    .add_var("x2", lambda x: x**2 - x + add_noise(len(x), sd=5), ["x1"])
-    .add_var("x3", lambda: 2)
-    .add_var("x4", lambda a1, a2: a1 + a2, {"a1": "x1", "a2": "x3"})
-    .add_var("x5", lambda x: [
-        "odd" if _ in [1, 3, 5]
-        else "even" if _ in [2, 4, 6]
-        else "unknown"
-        for _ in x
-    ], {"x": "x1"})
-    .add_var("x6", lambda x: np.random.choice(['male', 'female'], len(x), p=[0.5, 0.5]), ["x1"])
+	#Generate 25 numeric features with 5000 rows each; Relationships include level 1 - level 4 
+	.gen_multi(n=5000, num_cols=25, cat_cols=0, n_layers=4)
+	
+	#Add features with a specific function
+    .add_var("col26", lambda x: x**2 - x + add_noise(len(x), sd=5), ["x1"])
+    .add_var("col27", lambda a1, a2: a1 + a2, {"a1": "x1", "a2": "x3"})
+	
+    #Add a feature, with random nominal values
     .add_nominal()
+	
+	#Add a feature, with random ordinal values
     .add_ordinal()
+	
+	#Add a feature, with random interval values
     .add_interval()
+	
+	#Add a feature, with random ratio values
     .add_ratio()
-    .add_ratio()
-    .add_ratio()
-    .add_target("target", "random")
+	
+    #Add a biased and unbiased target which depends on randomly picked features
+	#The target is dependent on 20% of all features
+	#Target is binarized
+    .add_target(dependency_rate = 0.2, target_type = "binary")
+	
+	#Return the dataframe with the features specified above
     .create_df()
 )
 
