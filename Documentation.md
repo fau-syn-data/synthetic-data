@@ -1,48 +1,6 @@
-# Contents  {#contents .TOC-Heading}
+# Contents 
 
 
-
-[add_noise(n, mean=0, sd=1):
-[1](#add_noisen-mean0-sd1)](#add_noisen-mean0-sd1)[add_na(vec, n=None,
-share=0.05)
-[2](#add_navec-nnone-share0.05)](#add_navec-nnone-share0.05)[add_outlier(vec,
-n=None, share=0.01)
-[2](#add_outliervec-nnone-share0.01)](#add_outliervec-nnone-share0.01)[binarize_column(self,
-column_name, limit)
-[3](#binarize_columnself-column_name-limit)](#binarize_columnself-column_name-limit)[generate_name(self)
-[3](#generate_nameself)](#generate_nameself)[categorize_column(self,
-column_name, limits)
-[3](#categorize_columnself-column_name-limits)](#categorize_columnself-column_name-limits)[add_var(self,
-var_name: str, data_generation_function: Callable, features: list or
-dict = None, noise=True, outliers=True, nas=True)
-[4](#add_varself-var_name-str-data_generation_function-callable-features-list-or-dict-none-noisetrue-outlierstrue-nastrue)](#add_varself-var_name-str-data_generation_function-callable-features-list-or-dict-none-noisetrue-outlierstrue-nastrue)[extract_dependencies(self)
-[5](#extract_dependenciesself)](#extract_dependenciesself)[draw_graph(self)
-[5](#draw_graphself)](#draw_graphself)[check_inputs(self, n: int = None,
-var_name: str = None)
-[5](#check_inputsself-n-int-none-var_name-str-none)](#check_inputsself-n-int-none-var_name-str-none)[add_nominal(self,
-n: int = None, var_name: str = None, topic: Literal\[\"gender\",
-\"random\"\] = \"random\")
-[6](#add_nominalself-n-int-none-var_name-str-none-topic-literalgender-random-random)](#add_nominalself-n-int-none-var_name-str-none-topic-literalgender-random-random)[add_ordinal(self,
-n: int = None, var_name: str = None, topic: Literal\[\"grades\",
-\"random\"\] = \"random\")
-[6](#add_ordinalself-n-int-none-var_name-str-none-topic-literalgrades-random-random)](#add_ordinalself-n-int-none-var_name-str-none-topic-literalgrades-random-random)[add_interval(self,
-n: int = None, var_name: str = None, topic: Literal\[\"IQ\",
-\"random\"\] = \"random\")
-[7](#add_intervalself-n-int-none-var_name-str-none-topic-literaliq-random-random)](#add_intervalself-n-int-none-var_name-str-none-topic-literaliq-random-random)[add_ratio(self,
-n: int = None, var_name: str = None, topic: Literal\[\"revenue\",
-\"random\"\] = \"random\")
-[7](#add_ratioself-n-int-none-var_name-str-none-topic-literalrevenue-random-random)](#add_ratioself-n-int-none-var_name-str-none-topic-literalrevenue-random-random)[gen_target(self,
-var_name: str = \"target\", dependency_rate: float = 0.1,
-mandatory_features: list = \[\], bias: list = \[\])
-[8](#gen_targetself-var_name-str-target-dependency_rate-float-0.1-mandatory_features-list-bias-list)](#gen_targetself-var_name-str-target-dependency_rate-float-0.1-mandatory_features-list-bias-list)[add_target(self,
-var_name: str = None, dependency_rate: float = 0.2, target_type:
-Literal\[\"numerical\", \"binary\", \"categorical\"\] = \"numerical\",
-topic: Literal\[\"random\", \"loan\"\] = \"random\", n_classes: int = 2)
-[9](#add_targetself-var_name-str-none-dependency_rate-float-0.2-target_type-literalnumerical-binary-categorical-numerical-topic-literalrandom-loan-random-n_classes-int-2)](#add_targetself-var_name-str-none-dependency_rate-float-0.2-target_type-literalnumerical-binary-categorical-numerical-topic-literalrandom-loan-random-n_classes-int-2)[get_ground_truth(self)
-[9](#get_ground_truthself)](#get_ground_truthself)[create_df(self)
-[10](#create_dfself)](#create_dfself)[gen_multi(self, n:int=None,
-num_cols:int=0, cat_cols:int=0, n_layers:int=None)
-[10](#gen_multiself-nintnone-num_colsint0-cat_colsint0-n_layersintnone)](#gen_multiself-nintnone-num_colsint0-cat_colsint0-n_layersintnone)
 
 # add_noise(n, mean=0, sd=1):
 
