@@ -1,24 +1,6 @@
 # Contents  {#contents .TOC-Heading}
 
-1.  
-2.  
-3.  
-4.  
-5.  
-6.  
-7.  
-8.  
-9.  
-10. 
-11. 
-12. 
-13. 
-14. 
-15. 
-16. 
-17. 
-18. 
-19. 
+
 
 [add_noise(n, mean=0, sd=1):
 [1](#add_noisen-mean0-sd1)](#add_noisen-mean0-sd1)[add_na(vec, n=None,
