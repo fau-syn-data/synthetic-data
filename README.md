@@ -21,9 +21,6 @@ from synthedata import data_creator
 from synthedata.data_creator import add_noise
 
 # Initialize the DataCreator object
-
-
-# Initialize the DataCreator object
 dc = data_creator.DataCreator()
 (
     #Add variables with specified functions and dependencies
