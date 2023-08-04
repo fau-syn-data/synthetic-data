@@ -119,12 +119,15 @@ class DataCreator:
     def binarize_column(self, column_name, limit):
         '''This function binarizes the column of the dataframe based on the input limit.'''
         self.df[column_name]=(self.df[column_name] < limit).astype(int)
+        return self
 
     def categorize_column(self, column_name, limits):
         '''This function replaces numerical values in a column with generic categories.
         The limits set the lower and upper boudaries for the categories. The upper limit of the first category is the lower limit of the second and so on.
         '''
+        limits = sorted(list(set(limits)))
         self.df[column_name] = pd.cut(self.df[column_name], bins= limits, labels= ["class_" + str(i + 1) for i in range(len(limits) - 1)] )
+        return self
         
     def add_var(self, var_name:str, data_generation_function:Callable, features:list or dict=None,
                 noise=True, outliers=True, nas=True):
@@ -225,18 +228,28 @@ class DataCreator:
             var_name = self.generate_name()
         return n, var_name
 
-    def add_nominal(self, n:int=None, var_name:str=None, topic: Literal["gender"] = "gender"):
+    def add_nominal(self, n:int=None, var_name:str=None, topic: Literal["gender", "random"] = "random"):
         '''Adds a nominal column to the dataframe. So far only a distribution for gender is implemented.
         Possible extensions include e.g., generic nominal values, race distribution.'''
         n, var_name = self.check_inputs(n, var_name)
-        if topic=="gender":
+        if topic=="random":
+            p1 = np.random.uniform(0.1, 0.6)
+            p2 = np.random.uniform(0.1, 0.9-p1)
+            p3 = 1 - p1 - p2
+            return self.add_var(var_name, lambda: np.random.choice(['category_1','category_2', 'category_3'], n, p=[p1, p2, p3]), [])
+        elif topic=="gender":
             return self.add_var(var_name, lambda: np.random.choice(['male','female', 'diverse'], n, p=[0.45, 0.45, 0.1]), [])
         else: return self
 
-    def add_ordinal(self, n:int=None, var_name:str=None, topic: Literal["grades"] = "grades"):
-        '''Adds an ordinal column to the dataframe. So far only a distribution for grades is implemented.'''        
+    def add_ordinal(self, n:int=None, var_name:str=None, topic: Literal["grades", "random"] = "random"):
+        '''Adds an ordinal column to the dataframe. So far only a distribution for grades is implemented.'''
         n, var_name = self.check_inputs(n, var_name)
-        if topic=="grades":
+        if topic=="random":
+            p1 = np.random.uniform(0.1, 0.6)
+            p2 = np.random.uniform(0.1, 0.9-p1)
+            p3 = 1 - p1 - p2
+            return self.add_var(var_name, lambda: np.random.choice(['low','medium', 'high'], n, p=[p1, p2, p3]), [])
+        elif topic=="grades":
             return self.add_var(var_name, lambda:
                                 np.clip(
                                     np.around(
@@ -245,11 +258,19 @@ class DataCreator:
                                 [])
         else: return self
 
-
-    def add_interval(self, n:int=None, var_name:str=None, topic: Literal["IQ"] = "IQ"):
-        '''Adds an interval column to the dataframe. So far only a distribution for IQ is implemented.'''        
+    def add_interval(self, n:int=None, var_name:str=None, topic: Literal["IQ", "random"] = "random"):
+        '''Adds an interval column to the dataframe. So far only a distribution for IQ is implemented.'''
         n, var_name = self.check_inputs(n, var_name)
-        if topic=="IQ":
+        if topic=="random":
+            p1 = np.random.uniform(100, 2000)
+            p2 = np.random.uniform(1, 0.3*p1)
+            return self.add_var(var_name, lambda:
+                                np.clip(
+                                    np.around(
+                                        np.random.normal(loc=p1, scale=p2, size=n)
+                                        ), 0.3*p1, 1.7*p1).astype(int),
+                                [])
+        elif topic=="IQ":
             return self.add_var(var_name, lambda:
                                 np.clip(
                                     np.around(
@@ -258,10 +279,14 @@ class DataCreator:
                                 [])
         else: return self
 
-    def add_ratio(self, n:int=None, var_name:str=None, topic: Literal["revenue"] = "revenue"):
-        '''Adds a ratio column to the dataframe. So far only a distribution for revenue is implemented.'''        
+    def add_ratio(self, n:int=None, var_name:str=None, topic: Literal["revenue", "random"] = "random"):
+        '''Adds a ratio column to the dataframe. So far only a distribution for revenue is implemented.'''
         n, var_name = self.check_inputs(n, var_name)
-        if topic=="revenue":
+        if topic=="random":
+            p1 = np.random.uniform(-200, 200)
+            p2 = np.random.uniform(1, 300)
+            return self.add_var(var_name, lambda: np.around(np.random.normal(loc=p1, scale=p2, size=n)).astype(int),[])
+        elif topic=="revenue":
             return self.add_var(var_name, lambda:
                                 np.clip(
                                   np.around(
@@ -269,6 +294,7 @@ class DataCreator:
                                         ), 0.00, 572754000000.00),
                                 [])
         else: return self
+
 
     def gen_target(self, var_name="target", dependency_rate = 0.1, mandatory_features = [], bias = []):
         '''Generates the target and biased target column for the datafame.
