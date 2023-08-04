@@ -49,10 +49,10 @@ dc = data_creator.DataCreator()
 	#Target is binarized
 	.add_target(dependency_rate = 0.2, target_type = "binary")
 )
-#Print ground truth for target features
+#Return ground truth for target features
 dc.get_ground_truth()
 
-#Print ground truth for dependencies 
+#Return ground truth for dependencies 
 dc.extract_dependencies()
 
 #Draw dependecy graph
