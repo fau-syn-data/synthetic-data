@@ -31,28 +31,28 @@ df = (
 	.gen_multi(n=5000, num_cols=25, cat_cols=0, n_layers=4)
 	
 	#Add features with a specific function
-    .add_var("col26", lambda x: x**2 - x + add_noise(len(x), sd=5), ["x1"])
-    .add_var("col27", lambda a1, a2: a1 + a2, {"a1": "x1", "a2": "x3"})
+		.add_var("col26", lambda x: x**2 - x + add_noise(len(x), sd=5), ["x1"])
+		.add_var("col27", lambda a1, a2: a1 + a2, {"a1": "x1", "a2": "x3"})
 	
     #Add a feature, with random nominal values
-    .add_nominal()
+		.add_nominal()
 	
 	#Add a feature, with random ordinal values
-    .add_ordinal()
+		.add_ordinal()
 	
 	#Add a feature, with random interval values
-    .add_interval()
+		.add_interval()
 	
 	#Add a feature, with random ratio values
-    .add_ratio()
+		.add_ratio()
 	
     #Add a biased and unbiased target which depends on randomly picked features
 	#The target is dependent on 20% of all features
 	#Target is binarized
-    .add_target(dependency_rate = 0.2, target_type = "binary")
+		.add_target(dependency_rate = 0.2, target_type = "binary")
 	
 	#Return the dataframe with the features specified above
-    .create_df()
+		.create_df()
 )
 
 ```
